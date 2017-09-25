@@ -1,4 +1,4 @@
-function low(data_path)
+function blur(data_path)
 
 scale_factor    = 4;
 
