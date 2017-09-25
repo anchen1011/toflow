@@ -24,9 +24,7 @@ inpath = opt.inpath
 outpath = opt.outpath
 print('  input sequence: '..inpath)
 print('  result stored in: '..outpath)
-if ~exist(outpath, 'dir') then
-  mkdir(outpath)
-end
+paths.mkdir(outpath)
 
 print '==> loading...'
 
