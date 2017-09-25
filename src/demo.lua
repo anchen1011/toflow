@@ -9,8 +9,8 @@ cmd:text()
 cmd:text('Options:')
 cmd:option('-gpuID',            1,            'ID of GPUs to use')
 cmd:option('-mode',            'denoise',     'Model class for evaluation')
-cmd:option('-inpath',          'data/denoise','Model class for evaluation')
-cmd:option('-outpath',         'data/tmp',    'Model class for evaluation')
+cmd:option('-inpath',          'data/example','The input sequence directory')
+cmd:option('-outpath',         'data/tmp',    'The location to store the result')
 cmd:text()  
 
 opt = cmd:parse(arg or {})
@@ -24,20 +24,20 @@ inpath = opt.inpath
 outpath = opt.outpath
 print('  input sequence: '..inpath)
 print('  result stored in: '..outpath)
-if ~exist(outpath, 'dir')
-  mkdir(outpath);
+if ~exist(outpath, 'dir') then
+  mkdir(outpath)
 end
 
 print '==> loading...'
 
 if mode == 'denoise' then
-  modelpath = '/data/vision/billf/ssflow/baian/models/denoise.t7'
+  modelpath = 'models/denoise.t7'
 elseif mode == 'sr' then 
-  modelpath = '/data/vision/billf/ssflow/baian/models/sr.t7'
+  modelpath = 'models/sr.t7'
 elseif mode == 'interp' then
-  modelpath = '/data/vision/billf/ssflow/baian/models/interp.t7'
+  modelpath = 'interp.t7'
 elseif mode == 'deblock' then
-  modelpath = '/data/vision/billf/ssflow/baian/models/deblock.t7'
+  modelpath = 'deblock.t7'
   mode = 'denoise'
 end
 
