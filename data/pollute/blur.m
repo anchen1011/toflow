@@ -7,7 +7,7 @@ filenames   = dir(fullfile(data_path, '*.png'));
 num_imgs    = length(filenames);
 img_list    = cell(num_imgs, 1);
 for iimg = 1 : num_imgs
-    img_list{iimg} = im2double(imread(fullfile(data_path, filenames(iimg).name)));
+  img_list{iimg} = im2double(imread(fullfile(data_path, filenames(iimg).name)));
 	img_list{iimg} = dsr_imresize(img_list{iimg}, size(img_list{iimg}) / scale_factor, 'bicubic');
 end
 
