@@ -100,5 +100,5 @@ Result will be stored under input_path/blur
 
 Blocky sequences are compressed by FFmpeg. Our test set is generated with the following configuration:
 ```sh
-ffmpeg -i im%d.png -q 20 -vcodec jpeg2000 -format j2k v2.mov 
+ffmpeg -i *.png -q 20 -vcodec jpeg2000 -format j2k name.mov 
 ```
