@@ -58,7 +58,7 @@ There are a few options in demo.lua:
 
 73k frame RGB triplets (73k sequences, each sequence with 3 consecutive frames) from 15k video clips with fixed resolution 448 x 256. This dataset is designated for video interpolation. 
 
-The originals can be downloaded here: link (size)
+The originals can be downloaded here: link (33G)
 
 The test set can be downloaded here: link (1.7G)
 
