@@ -47,10 +47,10 @@ There are a few options in demo.lua:
 **gpuId**: GPU device ID
 
 **mode**: Options include
-***'denoise'***: video denoising 
-***'deblock'***: video deblocking
-***'interp'***: video interpolation
-***'sr'***: video super-resolution
+- 'denoise': video denoising 
+- 'deblock': video deblocking
+- 'interp': video interpolation
+- 'sr': video super-resolution
 
 **inpath**: The input sequence directory.
 
