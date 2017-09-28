@@ -67,17 +67,22 @@ There are a few options in demo.lua:
 
 **gpuId**: GPU device ID
 
-**mode**: Set it to 'denoise' to run denoising algorithm. Set it to 'deblock' to run deblocking algorithm. Set it to 'interp' to run interpolation algorithm. Set it to 'sr' to run super-resolution algorithm (bicubic pre-upscale required).
+**mode**: Options include
+- 'denoise': video denoising 
+- 'deblock': video deblocking
+- 'interp': video interpolation
+- 'sr': video super-resolution
 
 **inpath**: The input sequence directory.
 
 **outpath**: The location to store the result (data/tmp by default).
 
+
 ## The Vimeo Dataset
 
 #### Triplets
 
-73171 RGB frame triplets (73k sequences, each sequence with 3 consecutive frames) from 15k video clips with fixed resolution 448 x 256. This dataset is designated for video interpolation. 
+73171 RGB frame triplets (73k sequences, each sequence with 3 consecutive frames) from 15k video clips with fixed resolution 448 x 256. This dataset is designed for video interpolation. 
 
 The originals can be downloaded here: link (33G)
 
@@ -89,7 +94,7 @@ The list of testing sequences: data/tri_testlist.txt
 
 #### Septuplets
 
-91701 RGB frame septuplets (92k sequences, each sequence with 7 consecutive frames) from 39k video clips with fixed resolution 448 x 256. This dataset is designated to video denoising, super-resolution and deblock.
+91701 RGB frame septuplets (92k sequences, each sequence with 7 consecutive frames) from 39k video clips with fixed resolution 448 x 256. This dataset is designed to video denoising, deblocking, and super-resolution.
 
 The originals can be downloaded here: link (82G)
 
