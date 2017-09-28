@@ -29,6 +29,27 @@ git clone https://github.com/anchen1011/ssflow.git
 cd ssflow/src/stnbhwd
 luarocks make
 ```
+This will install 'stn' package for Lua. The list of components:
+```lua
+require 'stn'
+nn.AffineGridGeneratorBHWD(height, width)
+-- takes B x 2 x 3 affine transform matrices as input, 
+-- outputs a height x width grid in normalized [-1,1] coordinates
+-- output layout is B,H,W,2 where the first coordinate in the 4th dimension is y, and the second is x
+nn.BilinearSamplerBHWD()
+-- takes a table {inputImages, grids} as inputs
+-- outputs the interpolated images according to the grids
+-- inputImages is a batch of samples in BHWD layout
+-- grids is a batch of grids (output of AffineGridGeneratorBHWD)
+-- output is also BHWD
+nn.AffineTransformMatrixGenerator(useRotation, useScale, useTranslation)
+-- takes a B x nbParams tensor as inputs
+-- nbParams depends on the contrained transformation
+-- The parameters for the selected transformation(s) should be supplied in the
+-- following order: rotationAngle, scaleFactor, translationX, translationY
+-- If no transformation is specified, it generates a generic affine transformation (nbParams = 6)
+-- outputs B x 2 x 3 affine transform matrices
+```
 
 #### Download pretrained models (53MB) 
 ```sh
@@ -56,7 +77,7 @@ There are a few options in demo.lua:
 
 #### Triplets
 
-73k frame RGB triplets (73k sequences, each sequence with 3 consecutive frames) from 15k video clips with fixed resolution 448 x 256. This dataset is designated for video interpolation. 
+73171 RGB frame triplets (73k sequences, each sequence with 3 consecutive frames) from 15k video clips with fixed resolution 448 x 256. This dataset is designated for video interpolation. 
 
 The originals can be downloaded here: link (33G)
 
@@ -68,7 +89,7 @@ The list of testing sequences: data/tri_testlist.txt
 
 #### Septuplets
 
-92k frame septuplets (92k sequences, each sequence with 7 consecutive frames) from 39k video clips with fixed resolution 448 x 256. This dataset is designated to video denoising, super-resolution and deblock.
+91701 RGB frame septuplets (92k sequences, each sequence with 7 consecutive frames) from 39k video clips with fixed resolution 448 x 256. This dataset is designated to video denoising, super-resolution and deblock.
 
 The originals can be downloaded here: link (82G)
 
@@ -82,9 +103,9 @@ The list of training sequences: data/sep_trainlist.txt
 
 The list of testing sequences: data/sep_testlist.txt
 
-#### Poluting Code
+#### Generate Testing Sequences
 
-The code used to generate noisy/blur sequences is provided under data/pollute
+The code used to generate noisy/blur sequences is provided under src/gen_test
 
 Generate noisy sequences with Matlab
 ```
@@ -102,3 +123,6 @@ Blocky sequences are compressed by FFmpeg. Our test set is generated with the fo
 ```sh
 ffmpeg -i *.png -q 20 -vcodec jpeg2000 -format j2k name.mov 
 ```
+
+## References
+1. Our warping code is based on [qassemoquab/stnbhwd.](https://github.com/qassemoquab/stnbhwd)
