@@ -84,9 +84,9 @@ There are a few options in demo.lua:
 
 73171 RGB frame triplets (73k sequences, each sequence with 3 consecutive frames) from 15k video clips with fixed resolution 448 x 256. This dataset is designed for video interpolation. 
 
-The originals can be downloaded here: link (33G)
+The originals can be downloaded [here](http://data.csail.mit.edu/tofu/dataset/vimeo_tri.zip). (33G)
 
-The test set can be downloaded here: link (1.7G)
+The test set can be downloaded [here](http://data.csail.mit.edu/tofu/testset/vimeo_tri_test.zip). (1.7G)
 
 The list of training sequences: data/tri_trainlist.txt
 
@@ -96,13 +96,15 @@ The list of testing sequences: data/tri_testlist.txt
 
 91701 RGB frame septuplets (92k sequences, each sequence with 7 consecutive frames) from 39k video clips with fixed resolution 448 x 256. This dataset is designed to video denoising, deblocking, and super-resolution.
 
-The originals can be downloaded here: link (82G)
+The originals can be downloaded [here](http://data.csail.mit.edu/tofu/dataset/vimeo_sep.zip). (82G)
 
-The noisy testing set can be downloaded here: link (16G)
+The noisy testing set can be downloaded [here](http://data.csail.mit.edu/tofu/testset/vimeo_sep_noisy.zip). (16G)
 
-The blur testing set can be downloaded here: link (5G)
+The blur testing set can be downloaded [here](http://data.csail.mit.edu/tofu/testset/vimeo_sep_blur.zip). (5G)
 
-The blocky testing set can be downloaded here: link (11G)
+The low resolution testing set can be downloaded [here](http://data.csail.mit.edu/tofu/testset/vimeo_sep_low.zip). (649M)
+
+The blocky testing set can be downloaded [here](http://data.csail.mit.edu/tofu/testset/vimeo_sep_block.zip). (11G)
 
 The list of training sequences: data/sep_trainlist.txt
 
@@ -130,4 +132,4 @@ ffmpeg -i *.png -q 20 -vcodec jpeg2000 -format j2k name.mov
 ```
 
 ## References
-1. Our warping code is based on [qassemoquab/stnbhwd.](https://github.com/qassemoquab/stnbhwd)
+1. Our warping code is based on [qassemoquab/stnbhwd](https://github.com/qassemoquab/stnbhwd).
