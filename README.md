@@ -7,8 +7,8 @@ This repository contains pre-trained models and demo code for the project 'SSFlo
 #### Torch
 We use Torch 7 (http://torch.ch) for our implementation.
 
-#### Cuda
-We reply on Cuda (https://developer.nvidia.com/cuda-toolkit) for computation.
+#### Cuda [optional]
+Cuda is suggested (https://developer.nvidia.com/cuda-toolkit) for computation.
 
 #### Matlab [optional]
 We use Matlab (https://www.mathworks.com/products/matlab.html) to generate noisy/blur sequences for training/testing.
