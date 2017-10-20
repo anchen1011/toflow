@@ -1,9 +1,13 @@
 ---------------- Require -----------------------
 require 'image'
-require 'cutorch'
-cutorch.setDevice(opt.gpuID) -- goes after cutorch and before nn
+if opt.cuda then
+  require 'cutorch'
+  cutorch.setDevice(opt.gpuID) -- goes after cutorch and before nn
+end
 require 'nn'
-require 'cudnn'
+if opt.cuda then
+  require 'cudnn'
+end
 require 'stn'
 require 'util/nn/WarpFlowNew'
 require 'util/nn/ShuffleTable'
@@ -11,5 +15,7 @@ require 'optim'
 require 'util/ut'
 
 ----------------------- Set cuda ----------------------
-cudnn.fastest = true
-cudnn.benchmark = true
+if opt.cuda then
+  cudnn.fastest = true
+  cudnn.benchmark = true
+end

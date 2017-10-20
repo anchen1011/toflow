@@ -7,17 +7,19 @@ cmd:text()
 cmd:text('ssflow runnable')
 cmd:text()
 cmd:text('Options:')
+cmd:option('-cuda',             false,         'Whether using cuda')
 cmd:option('-gpuID',            1,            'ID of GPUs to use')
 cmd:option('-mode',            'denoise',     'Model class for evaluation')
-cmd:option('-inpath',          'data/example','The input sequence directory')
-cmd:option('-outpath',         'data/tmp',    'The location to store the result')
+cmd:option('-inpath',          '../data/example','The input sequence directory')
+cmd:option('-outpath',         '../data/tmp',    'The location to store the result')
 cmd:text()  
 
 opt = cmd:parse(arg or {})
 
 require('main/init')
-local gen = require('main/gen')
-local get = require('main/get')
+local loader = require('main/loader')
+local gen_path = loader.gen_path
+local get_file = loader.get_file
 
 mode = opt.mode
 inpath = opt.inpath
@@ -29,20 +31,23 @@ paths.mkdir(outpath)
 print '==> loading...'
 
 if mode == 'denoise' then
-  modelpath = 'models/denoise.t7'
+  modelpath = '../models/denoise.t7'
 elseif mode == 'sr' then 
-  modelpath = 'models/sr.t7'
+  modelpath = '../models/sr.t7'
 elseif mode == 'interp' then
-  modelpath = 'interp.t7'
+  modelpath = '../interp.t7'
 elseif mode == 'deblock' then
-  modelpath = 'deblock.t7'
+  modelpath = '../deblock.t7'
   mode = 'denoise'
 end
 
 local loadMode = 'sep'
 if mode == 'interp' then loadMode = 'tri' end
-local st = gen(inpath, loadMode)
-local model = torch.load(modelpath):cuda()
+local st = gen_path(inpath, loadMode)
+local model = torch.load(modelpath)
+if opt.cuda then 
+  model = model:cuda()
+end
 model:evaluate()
 local size = #st
 
@@ -57,8 +62,10 @@ w = 16 * math.floor(w / 16)
 print '==> processing...'
 
 for i = 1,size do
-  sample, h, w = get(st[i], loadMode, h, w)
-  sample = ut.nn.cudanize(sample)
+  sample, h, w = get_file(st[i], loadMode, h, w)
+  if opt.cuda then 
+    sample = ut.nn.cudanize(sample)
+  end
   timer:reset()
   local output = ut.nn.memFriendlyForward(model, sample):double()
   output = output:double()

@@ -107,7 +107,7 @@ function ShuffleTable:updateGradInput(input, gradOutput)
   end
 
   -- Cuda
-  if opt == nil or opt.cuda == nil or opt.cuda then
+  if opt == nil or opt.cuda then
     for i = 1,#self.gradInput do
       if type(self.gradInput[i]) == 'table' then
         for j = 1,#self.gradInput[i] do
