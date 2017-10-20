@@ -1,1 +1,0 @@
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -O3 -DNDEBUG -bundle -Wl,-headerpad_max_install_names -undefined dynamic_lookup -o libstn.so CMakeFiles/stn.dir/init.c.o  -L/Users/chenbaian/torch/install/lib -Wl,-rpath,/Users/chenbaian/torch/install/lib -lluaT /Users/chenbaian/torch/install/lib/libTH.0.dylib -framework Accelerate -lm 

@@ -1,7 +1,0 @@
-/Users/chenbaian/torch/install/lib/luarocks/rocks/stnbhwd/scm-1/lib/libstn.so
-/Users/chenbaian/torch/install/lib/luarocks/rocks/stnbhwd/scm-1/lua/stn/AffineGridGeneratorBHWD.lua
-/Users/chenbaian/torch/install/lib/luarocks/rocks/stnbhwd/scm-1/lua/stn/AffineTransformMatrixGenerator.lua
-/Users/chenbaian/torch/install/lib/luarocks/rocks/stnbhwd/scm-1/lua/stn/BilinearSamplerBHWD.lua
-/Users/chenbaian/torch/install/lib/luarocks/rocks/stnbhwd/scm-1/lua/stn/ScaleBHWD.lua
-/Users/chenbaian/torch/install/lib/luarocks/rocks/stnbhwd/scm-1/lua/stn/init.lua
-/Users/chenbaian/torch/install/lib/luarocks/rocks/stnbhwd/scm-1/lua/stn/test.lua
