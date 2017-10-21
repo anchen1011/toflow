@@ -144,7 +144,7 @@ Results will be returned by the function and printed to the screen.
 
 It is assumed that our datasets are unzipped under data/ and not renamed. It is also assumed that your results are put under [output_root]/[task_name] e.g. result/sr result/interp result/denoise result/deblock. 
 
-You could further modify src/eval/tasks.m to specify what you are evaluating and wlocation. hat's the 
+You could further modify src/eval/tasks.m to specify what you are evaluating and where is the location. hat's the 
 
 ## References
 1. Our warping code is based on [qassemoquab/stnbhwd](https://github.com/qassemoquab/stnbhwd).
