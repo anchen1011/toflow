@@ -51,7 +51,7 @@ nn.AffineTransformMatrixGenerator(useRotation, useScale, useTranslation)
 -- outputs B x 2 x 3 affine transform matrices
 ```
 
-#### Download pretrained models (53MB) 
+#### Download pretrained models (104MB) 
 ```sh
 cd ../../
 ./download_models.sh
