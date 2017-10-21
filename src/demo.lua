@@ -44,8 +44,9 @@ end
 local loadMode = 'sep'
 if mode == 'interp' then loadMode = 'tri' end
 local st = gen_path(inpath, loadMode)
-local model = torch.load(modelpath)
+model = torch.load(modelpath):float()
 if opt.cuda then 
+  model = cudnn.convert(model,cudnn)
   model = model:cuda()
 end
 model:evaluate()
@@ -55,7 +56,7 @@ local time = 0
 local timer = torch.Timer()
 local sample, h, w
 
-sample, h, w = get(st[1], loadMode, h, w)
+sample, h, w = get_file(st[1], loadMode, h, w)
 h = 16 * math.floor(h / 16)
 w = 16 * math.floor(w / 16)
 
@@ -65,12 +66,14 @@ for i = 1,size do
   sample, h, w = get_file(st[i], loadMode, h, w)
   if opt.cuda then 
     sample = ut.nn.cudanize(sample)
+  else
+	sample = ut.nn.floatize(sample)
   end
   timer:reset()
-  local output = ut.nn.memFriendlyForward(model, sample):double()
-  output = output:double()
+  local output = ut.nn.memFriendlyForward(model, sample):float()
+  output = output:float()
   if mode == 'sr' then 
-    output:add(sample[1]:double())
+    output:add(sample[1]:float())
   end
   output = ut.tf.defaultDetransform(output:squeeze())
   local curTime = timer:time().real

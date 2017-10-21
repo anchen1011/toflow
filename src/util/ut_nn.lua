@@ -470,6 +470,27 @@ function M.doublize(x)
   end
 end
 
+function M.floatize(x)
+  if x == nil then
+    return nil
+  elseif type(x) ~= 'table' then
+    return x:float()
+  else
+    local function floatizeL(y)
+      if type(y) == 'table' then
+        local list = {}
+        for name, field in pairs(y) do
+          list[name] = floatizeL(field)
+        end
+        return list
+      else
+        return y:float()
+      end
+    end
+    return floatizeL(x)
+  end
+end
+
 
 function M.tensorDimsStr (A)
   if torch.isTensor(A) then
