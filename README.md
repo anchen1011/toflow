@@ -65,7 +65,9 @@ th demo.lua
 
 There are a few options in demo.lua:
 
-**gpuId**: GPU device ID
+**cuda**: Whether Cuda is used.
+
+**gpuId**: GPU device ID.
 
 **mode**: Options include
 - 'denoise': video denoising 

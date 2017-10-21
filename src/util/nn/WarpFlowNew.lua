@@ -8,7 +8,7 @@ local function createAddTerm(H, W, squeezed, cuda)
   if cuda then
     addTerm = torch.CudaTensor(1, 2, H, W)
   else
-    addTerm = torch.DoubleTensor(1, 2, H, W)
+    addTerm = torch.DoubleTensor(1, 2, H, W):float()
   end
   addTerm[{1, 1,{},{}}] = 
     nn.Replicate(H,1):forward(
@@ -57,7 +57,9 @@ function WarpFlowNew:initFloNet()
         :add(nn.Unsqueeze(1,2))))
     :add(nn.JoinTable(1,3))
     
-  self.floNet = floNet
+  self.floNet = floNet:float()
+  self.innerModel = self.innerModel:float()
+
   if self.cuda then
     self.innerModel = self.innerModel:cuda()
     self.floNet = self.floNet:cuda()
@@ -67,10 +69,9 @@ end
 
 function WarpFlowNew:__init(squeezed, cuda)
   if squeezed == nil then squeezed = false end
-  if cuda == nil then cuda = true end
   self.squeezed = squeezed
   self.cuda = cuda
-   self.innerModel = nil
+  self.innerModel = nil
   self.floNet = nil
   self.midInput = nil
   self.midGradInput = nil
@@ -89,6 +90,15 @@ function WarpFlowNew:getAddTerm(inputSize)
       self.addTermList[b] = torch.expand(self.addTerm,b,2,self.h,self.w) 
     end
     return self.addTermList[b]
+  end
+end
+
+function WarpFlowNew:type(type,tensorCache)
+  if self.innerModel ~= nil then
+    self.innerModel = self.innerModel:type(type,tensorCache)
+  end
+  if self.floNet ~= nil then 
+    self.floNet = self.floNet:type(type,tensorCache)
   end
 end
 
@@ -133,6 +143,13 @@ function WarpFlowNew:sanitize()
 end
 
 function WarpFlowNew:updateOutput(input)
+  if opt.cuda == nil then
+    opt.cuda = false
+  end
+  if opt.cuda ~= self.cuda then
+    self.cuda = opt.cuda
+    self:sanitize()
+  end
   local inputSize = input[2]:size()
   self:checkSizeChange(inputSize)
   self.midInput = {input[1], self.floNet:forward({input[2], self:getAddTerm(inputSize)})}
