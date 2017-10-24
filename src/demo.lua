@@ -4,7 +4,7 @@ print '==> initializing...'
 local cmd = torch.CmdLine()
 
 cmd:text()
-cmd:text('ssflow runnable')
+cmd:text('tofu runnable')
 cmd:text()
 cmd:text('Options:')
 cmd:option('-cuda',             true,         'Whether using cuda')
@@ -35,9 +35,9 @@ if mode == 'denoise' then
 elseif mode == 'sr' then 
   modelpath = '../models/sr.t7'
 elseif mode == 'interp' then
-  modelpath = '../interp.t7'
+  modelpath = '../models/interp.t7'
 elseif mode == 'deblock' then
-  modelpath = '../deblock.t7'
+  modelpath = '../models/deblock.t7'
   mode = 'denoise'
 end
 

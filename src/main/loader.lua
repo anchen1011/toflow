@@ -22,7 +22,7 @@ end
 local function gen(pth, mode)
   local num = 7
   if mode == 'tri' then
-    num = 3
+    num = 2
   end
   local lst = dir.getallfiles(pth)
   table.sort(lst)
