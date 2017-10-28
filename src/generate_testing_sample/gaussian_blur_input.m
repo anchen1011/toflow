@@ -1,5 +1,7 @@
 function gaussian_blur_input(data_path)
 
+% TODO(baian): make output folder as an parameter: gaussian_blur_input(data_path, output_path)
+
 scale_factor    = 4;
 
 %% read input images
