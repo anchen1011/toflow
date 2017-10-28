@@ -11,6 +11,11 @@ cmd:option('-cuda',             true,         'Whether using cuda')
 cmd:option('-gpuID',            1,            'ID of GPUs to use')
 cmd:option('-mode',            'denoise',     'Model class for evaluation')
 cmd:option('-inpath',          '../data/example','The input sequence directory')
+-- TODO(baian): can you add examples for all four tasks? You can order the folder like this (these 4 sequences don't need to be in the same length):
+--   data/example/denoise: im1.png ... im9.png (noisy input)
+--   data/example/deblock: im1.png ... im9.png (blocky input)
+--   data/example/sr: im1.png ... im9.png (low-res input)
+--   data/example/interp: im1.png ... im9.png (low-frame rate input)
 cmd:option('-outpath',         '../data/tmp',    'The location to store the result')
 cmd:text()  
 
@@ -44,6 +49,23 @@ end
 local loadMode = 'sep'
 if mode == 'interp' then loadMode = 'tri' end
 local st = gen_path(inpath, loadMode)
+-- st is a table of input files.
+-- 
+-- Support there are 9 images under inpath: im1.png, im2.png, ..., im9.png
+-- 
+-- For interpolation:
+--   st[1] = {'im1.png', 'im2.png'}  => the algorithm will generate frame at T=1.5
+--   st[2] = {'im2.png', 'im3.png'}  => T=2.5
+--   ...
+--   st[8] = {'im8.png', 'im9.png'}  => T=8.5
+--
+-- For denoising/deblocking/sr:
+--   st[1] = {'im1.png', 'im2.png', ..., 'im7.png}  => the algorithm will a noise-free/block-free/high-res version of im4.png
+--   st[2] = {'im2.png', 'im3.png', ..., 'im8.png}  => im5.png
+--   ...
+--
+-- TODO(baian): check the comments above and correct it if it is wrong/unclear
+
 model = torch.load(modelpath):float()
 if opt.cuda then 
   model = cudnn.convert(model,cudnn)
@@ -67,11 +89,10 @@ for i = 1,size do
   if opt.cuda then 
     sample = ut.nn.cudanize(sample)
   else
-	sample = ut.nn.floatize(sample)
+    sample = ut.nn.floatize(sample)
   end
   timer:reset()
   local output = ut.nn.memFriendlyForward(model, sample):float()
-  output = output:float()
   if mode == 'sr' then 
     output:add(sample[1]:float())
   end
