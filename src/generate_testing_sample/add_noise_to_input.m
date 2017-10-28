@@ -1,5 +1,7 @@
 function add_noise_to_input(data_path)
 
+% TODO(baian): make output folder as an parameter: add_noise_to_input(data_path, output_path)
+
 filenames   = dir(fullfile(data_path, '*.png'));
 num_imgs    = length(filenames);
 img_list    = cell(num_imgs, 1);
