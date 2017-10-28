@@ -1,4 +1,4 @@
-function result = evaluate(output_root)
+function result = evaluate(output_root='../../output')
   [n, ts] = get_tasks(output_root);
   result = cell(1,n);
   for k = 1:n

@@ -132,6 +132,26 @@ Blocky sequences are compressed by FFmpeg. Our test set is generated with the fo
 ```sh
 ffmpeg -i *.png -q 20 -vcodec jpeg2000 -format j2k name.mov 
 ```
+
+#### Download the dataset (115G) [optional]
+```sh
+./download_dataset.sh
+``` 
+
+#### Download the testset (35G) 
+```sh
+./download_testset.sh
+``` 
+
+#### Run test code
+```sh
+cd src
+th demo_vimeo.lua -mode denoise
+th demo_vimeo.lua -mode interp
+th demo_vimeo.lua -mode sr
+th demo_vimeo.lua -mode deblock
+```
+
 #### Evaluate
 
 The code used to evaluate results in PSNR, SSIM, Abs metrics is provided under src/evaluation
@@ -148,3 +168,4 @@ You could further modify src/evaluation/get_tasks.m to specify what you are eval
 
 ## References
 1. Our warping code is based on [qassemoquab/stnbhwd](https://github.com/qassemoquab/stnbhwd).
+2. Our flow and transformation utilities are based on [anuragranj/spynet](https://github.com/anuragranj/spynet)
