@@ -120,15 +120,8 @@ for m = 1,#subpaths do
       collectgarbage()
 
       -- Save results
-      if mode == 'interp' then
-        local p1 = paths.concat(outpath, string.format('%04d.png',2*i-1))
-        local p2 = paths.concat(outpath, string.format('%04d.png', 2*i))
-        image.save(p1, ut.tf.defaultDetransform(sample[1]:squeeze()))
-        image.save(p2, output)
-      else
-        local p2 = paths.concat(outpath, string.format('%04d.png', i))
-        image.save(p2, output)
-      end
+      local p2 = paths.concat(outpath, 'out.png')
+      image.save(p2, output)
 
       print('  frame '..i..' is done, it takes '..curTime..'s')
     end

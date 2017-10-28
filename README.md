@@ -133,7 +133,7 @@ Blocky sequences are compressed by FFmpeg. Our test set is generated with the fo
 ffmpeg -i *.png -q 20 -vcodec jpeg2000 -format j2k name.mov 
 ```
 
-#### Download the dataset (115G) [optional]
+#### Download the dataset (115G)
 ```sh
 ./download_dataset.sh
 ``` 
