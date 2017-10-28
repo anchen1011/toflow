@@ -60,7 +60,10 @@ cd ../../
 #### Run test code
 ```sh
 cd src
-th demo.lua
+th demo.lua -mode interp
+th demo.lua -mode denoise
+th demo.lua -mode deblock
+th demo.lua -mode sr
 ```
 
 There are a few options in demo.lua:
@@ -70,9 +73,9 @@ There are a few options in demo.lua:
 **gpuId**: GPU device ID.
 
 **mode**: Options include
+- 'interp': video interpolation
 - 'denoise': video denoising 
 - 'deblock': video deblocking
-- 'interp': video interpolation
 - 'sr': video super-resolution
 
 **inpath**: The input sequence directory.
@@ -118,13 +121,13 @@ The code used to generate noisy/blur sequences is provided under src/generate_te
 
 Generate noisy sequences with Matlab under src/generate_testing_sample
 ```
-noise(input_path);
+noise(input_path); TODO(baian): change function name. Also, where is this function? I cannot find it on github.
 ``` 
 Result will be stored under input_path/noisy
 
 Generate blur sequences with Matlab
 ```
-blur(input_path);
+blur(input_path);  TODO(baian): same as above
 ```
 Result will be stored under input_path/blur
 
@@ -146,10 +149,10 @@ ffmpeg -i *.png -q 20 -vcodec jpeg2000 -format j2k name.mov
 #### Run test code
 ```sh
 cd src
-th demo_vimeo.lua -mode denoise
 th demo_vimeo.lua -mode interp
-th demo_vimeo.lua -mode sr
+th demo_vimeo.lua -mode denoise
 th demo_vimeo.lua -mode deblock
+th demo_vimeo.lua -mode sr
 ```
 
 #### Evaluate
