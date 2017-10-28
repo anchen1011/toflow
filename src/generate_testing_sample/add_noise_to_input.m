@@ -1,4 +1,4 @@
-function noise(data_path)
+function add_noise_to_input(data_path)
 
 filenames   = dir(fullfile(data_path, '*.png'));
 num_imgs    = length(filenames);

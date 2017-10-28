@@ -1,4 +1,4 @@
-function blur(data_path)
+function gaussian_blur_input(data_path)
 
 scale_factor    = 4;
 

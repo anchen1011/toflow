@@ -1,4 +1,4 @@
-function [p, s, a] = template(nim, gtdir, esdir, sampledirs, gtsuffix, essuffix)
+function [p, s, a] = run_eval_template(nim, gtdir, esdir, sampledirs, gtsuffix, essuffix)
 
 imlist = cell(1, nim);
 count = 0;

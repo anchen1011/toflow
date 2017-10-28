@@ -114,9 +114,9 @@ The list of testing sequences: data/sep_testlist.txt
 
 #### Generate Testing Sequences
 
-The code used to generate noisy/blur sequences is provided under src/gen_test
+The code used to generate noisy/blur sequences is provided under src/generate_testing_sample
 
-Generate noisy sequences with Matlab
+Generate noisy sequences with Matlab under src/generate_testing_sample
 ```
 noise(input_path);
 ``` 
@@ -134,17 +134,17 @@ ffmpeg -i *.png -q 20 -vcodec jpeg2000 -format j2k name.mov
 ```
 #### Evaluate
 
-The code used to evaluate results in PSNR, SSIM, Abs metrics is provided under src/eval
+The code used to evaluate results in PSNR, SSIM, Abs metrics is provided under src/evaluation
 
-Evaluate results with Matlab under src/eval
+Evaluate results with Matlab under src/evaluation
 ```
-eval(output_root);
+evaluate(output_root);
 ``` 
 Results will be returned by the function and printed to the screen.
 
 It is assumed that our datasets are unzipped under data/ and not renamed. It is also assumed that your results are put under [output_root]/[task_name] e.g. result/sr result/interp result/denoise result/deblock. 
 
-You could further modify src/eval/tasks.m to specify what you are evaluating and where is the location. hat's the 
+You could further modify src/evaluation/get_tasks.m to specify what you are evaluating and where is the location. 
 
 ## References
 1. Our warping code is based on [qassemoquab/stnbhwd](https://github.com/qassemoquab/stnbhwd).
