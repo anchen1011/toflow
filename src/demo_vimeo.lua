@@ -133,3 +133,4 @@ print '==> finishing...'
 
 sample = nil
 print('  '..mode..' takes '..time..'s on '..size..' frames sequence')
+-- TODO(Baian): Can you print the average runtime too?
