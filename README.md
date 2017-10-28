@@ -158,8 +158,9 @@ The code used to evaluate results in PSNR, SSIM, Abs metrics is provided under s
 
 Evaluate results with Matlab under src/evaluation
 ```
-evaluate(output_root);
+evaluate([output_root='../../output']);
 ``` 
+
 Results will be returned by the function and printed to the screen.
 
 It is assumed that our datasets are unzipped under data/ and not renamed. It is also assumed that your results are put under [output_root]/[task_name] e.g. result/sr result/interp result/denoise result/deblock. 
