@@ -80,6 +80,7 @@ model:evaluate()
 local time = 0
 local timer = torch.Timer()
 local sample, h, w
+local counter = 0
 
 subpaths = dir.getdirectories(inpath)
 for m = 1,#subpaths do
@@ -124,6 +125,7 @@ for m = 1,#subpaths do
       image.save(p2, output)
 
       print('  frame '..i..' is done, it takes '..curTime..'s')
+      counter = counter + 1
     end
 
   end
@@ -132,5 +134,5 @@ end
 print '==> finishing...'
 
 sample = nil
-print('  '..mode..' takes '..time..'s on '..size..' frames sequence')
--- TODO(Baian): Can you print the average runtime too?
+print('  '..mode..' takes '..time..'s on '..counter..' sequences')
+print('  '..'i.e. '..(time/counter)..'s on average per sequence')

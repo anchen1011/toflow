@@ -1,6 +1,4 @@
-function gaussian_blur_input(data_path)
-
-% TODO(baian): make output folder as an parameter: gaussian_blur_input(data_path, output_path)
+function gaussian_blur_input(data_path, output_path)
 
 scale_factor    = 4;
 
@@ -17,11 +15,11 @@ for iimg = 1 : num_imgs
 	img_list{iimg} = dsr_imresize(img_list{iimg}, size(img_list{iimg}) * scale_factor, 'bicubic');
 end
 
-if ~exist([data_path '/blur'], 'dir')
-	mkdir([data_path '/blur']);
+if ~exist(output_path, 'dir')
+  mkdir(output_path);
 end
 for iimg = 1 : num_imgs
-	imwrite(img_list{iimg}, [data_path '/blur/im' sprintf('%04d',iimg) '.png'])
+	imwrite(img_list{iimg}, [output_path '/im' sprintf('%04d',iimg) '.png'])
 end
 
 end
