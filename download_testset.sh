@@ -2,6 +2,9 @@ cd data
 wget http://data.csail.mit.edu/tofu/testset/vimeo_tri_test.zip
 unzip vimeo_tri_test.zip
 rm vimeo_tri_test.zip
+wget http://data.csail.mit.edu/tofu/testset/vimeo_tri_test_original.zip
+unzip vimeo_tri_test_original.zip
+rm vimeo_tri_test_original.zip
 wget http://data.csail.mit.edu/tofu/testset/vimeo_sep_noisy.zip
 unzip vimeo_sep_noisy.zip
 rm vimeo_sep_noisy.zip
@@ -14,4 +17,7 @@ rm vimeo_sep_low.zip
 wget http://data.csail.mit.edu/tofu/testset/vimeo_sep_block.zip
 unzip vimeo_sep_block.zip
 rm vimeo_sep_block.zip
+wget http://data.csail.mit.edu/tofu/testset/vimeo_sep_test_original.zip
+unzip vimeo_sep_test_original.zip
+rm vimeo_sep_test_original.zip
 cd ..
