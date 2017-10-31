@@ -91,7 +91,9 @@ There are a few options in demo.lua:
 
 The originals can be downloaded [here](http://data.csail.mit.edu/tofu/dataset/vimeo_tri.zip). (33G)
 
-The test set can be downloaded [here](http://data.csail.mit.edu/tofu/testset/vimeo_tri_test.zip). (1.7G)
+The testing set can be downloaded [here](http://data.csail.mit.edu/tofu/testset/vimeo_tri_test.zip). (1.7G)
+
+The testing set originals can be downloaded [here](). (G)
 
 The list of training sequences: data/tri_trainlist.txt
 
@@ -110,6 +112,8 @@ The blur testing set can be downloaded [here](http://data.csail.mit.edu/tofu/tes
 The low resolution testing set can be downloaded [here](http://data.csail.mit.edu/tofu/testset/vimeo_sep_low.zip). (649M)
 
 The blocky testing set can be downloaded [here](http://data.csail.mit.edu/tofu/testset/vimeo_sep_block.zip). (11G)
+
+The testing set originals can be downloaded [here](). (G)
 
 The list of training sequences: data/sep_trainlist.txt
 
@@ -136,7 +140,7 @@ Blocky sequences are compressed by FFmpeg. Our test set is generated with the fo
 ffmpeg -i *.png -q 20 -vcodec jpeg2000 -format j2k name.mov 
 ```
 
-#### Download the dataset (115G)
+#### Download the dataset (115G) [optional]
 ```sh
 ./download_dataset.sh
 ``` 
@@ -161,14 +165,20 @@ The code used to evaluate results in PSNR, SSIM, Abs metrics is provided under s
 
 Evaluate results with Matlab under src/evaluation
 ```
-evaluate(output_root='../../output');
+evaluate(output_dir, target_dir);
 ``` 
 
 Results will be returned by the function and printed to the screen.
 
-It is assumed that our datasets are unzipped under data/ and not renamed. It is also assumed that your results are put under [output_root]/[task_name] e.g. result/sr result/interp result/denoise result/deblock. 
+To evaluate our results, under src/evaluation with Matlab
+```
+evaluate('../../result/interp', '../../data/vimeo_tri_test_original')
+evaluate('../../result/denoise', '../../data/vimeo_sep_test_original')
+evaluate('../../result/deblock', '../../data/vimeo_sep_test_original')
+evaluate('../../result/sr', '../../data/vimeo_sep_test_original')
+```
 
-You could further modify src/evaluation/get_tasks.m to specify what you are evaluating and where is the location. 
+It is assumed that our datasets are unzipped under data/ and not renamed. It is also assumed that results are put under [output_root]/[task_name] e.g. result/sr result/interp result/denoise result/deblock, with exactly the same subfolder structure as our datasets.
 
 ## References
 1. Our warping code is based on [qassemoquab/stnbhwd](https://github.com/qassemoquab/stnbhwd).
