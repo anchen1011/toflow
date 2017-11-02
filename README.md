@@ -145,7 +145,7 @@ ffmpeg -i *.png -q 20 -vcodec jpeg2000 -format j2k name.mov
 ./download_dataset.sh
 ``` 
 
-#### Download the testset (35G) 
+#### Download the testset (52G) 
 ```sh
 ./download_testset.sh
 ``` 
