@@ -46,7 +46,7 @@ if mode == 'interp' then loadMode = 'tri' end
 local st = gen_path(inpath, loadMode)
 -- st is a table of input files.
 -- 
--- Support there are 9 images under inpath: im1.png, im2.png, ..., im9.png
+-- Suppose there are 9 images under inpath: im1.png, im2.png, ..., im9.png
 -- 
 -- For interpolation:
 --   st[1] = {'im1.png', 'im2.png'}  => the algorithm will generate frame at T=1.5
@@ -58,8 +58,6 @@ local st = gen_path(inpath, loadMode)
 --   st[1] = {'im1.png', 'im2.png', ..., 'im7.png}  => the algorithm will a noise-free/block-free/high-res version of im4.png
 --   st[2] = {'im2.png', 'im3.png', ..., 'im8.png}  => im5.png
 --   ...
---
--- TODO(baian): check the comments above and correct it if it is wrong/unclear
 
 model = torch.load(modelpath):float()
 if opt.cuda then 
