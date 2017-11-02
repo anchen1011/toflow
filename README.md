@@ -93,7 +93,7 @@ The originals can be downloaded [here](http://data.csail.mit.edu/tofu/dataset/vi
 
 The testing set can be downloaded [here](http://data.csail.mit.edu/tofu/testset/vimeo_tri_test.zip). (1.7G)
 
-The testing set originals can be downloaded [here](). (G)
+The testing set originals can be downloaded [here](http://data.csail.mit.edu/tofu/testset/vimeo_tri_test_original.zip). (1.7G)
 
 The list of training sequences: data/tri_trainlist.txt
 
@@ -113,7 +113,7 @@ The low resolution testing set can be downloaded [here](http://data.csail.mit.ed
 
 The blocky testing set can be downloaded [here](http://data.csail.mit.edu/tofu/testset/vimeo_sep_block.zip). (11G)
 
-The testing set originals can be downloaded [here](). (G)
+The testing set originals can be downloaded [here](http://data.csail.mit.edu/tofu/testset/vimeo_sep_test_original.zip). (15G)
 
 The list of training sequences: data/sep_trainlist.txt
 
@@ -125,13 +125,13 @@ The code used to generate noisy/blur sequences is provided under src/generate_te
 
 Generate noisy sequences with Matlab under src/generate_testing_sample
 ```
-noise(input_path); TODO(baian): change function name. Also, where is this function? I cannot find it on github.
+add_noise_to_input(data_path, output_path);
 ``` 
 Result will be stored under input_path/noisy
 
 Generate blur sequences with Matlab
 ```
-blur(input_path);  TODO(baian): same as above
+blur_input(data_path, output_path);
 ```
 Result will be stored under input_path/blur
 
