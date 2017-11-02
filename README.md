@@ -60,10 +60,10 @@ cd ../../
 #### Run test code
 ```sh
 cd src
-th demo.lua -mode interp
-th demo.lua -mode denoise
-th demo.lua -mode deblock
-th demo.lua -mode sr
+th demo.lua -mode interp -inpath ../data/example/low_frame_rate
+th demo.lua -mode denoise -inpath ../data/example/noisy
+th demo.lua -mode deblock -inpath ../data/example/block
+th demo.lua -mode sr -inpath ../data/example/blur
 ```
 
 There are a few options in demo.lua:
