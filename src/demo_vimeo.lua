@@ -7,11 +7,11 @@ cmd:text()
 cmd:text('tofu runnable')
 cmd:text()
 cmd:text('Options:')
-cmd:option('-cuda',             true,         'Whether using cuda')
-cmd:option('-gpuID',            1,            'ID of GPUs to use')
-cmd:option('-mode',            'denoise',     'Model class for evaluation')
-cmd:option('-inpath',          nil,           'The input sequence directory')
-cmd:option('-outpath',         nil,           'The location to store the result')
+cmd:option('-cuda',            true,         'Whether using cuda')
+cmd:option('-gpuID',           1,            'ID of GPUs to use')
+cmd:option('-mode',            'denoise',    'Model class for evaluation')
+cmd:option('-inpath',          '',           'The input sequence directory')
+cmd:option('-outpath',         '',           'The location to store the result')
 cmd:text()  
 
 opt = cmd:parse(arg or {})
@@ -87,7 +87,6 @@ for m = 1,#subpaths do
   subsubpaths = dir.getdirectories(subpaths[m])
   for n = 1,#subsubpaths do
     finalpath = subsubpaths[n]
-    paths.mkdir(finalpath)
 
     local st = gen_path(finalpath, loadMode)
     local size = #st
@@ -121,7 +120,9 @@ for m = 1,#subpaths do
       collectgarbage()
 
       -- Save results
-      local p2 = paths.concat(outpath, 'out.png')
+      local savepath = paths.concat(outpath, string.sub(finalpath,#finalpath-9))
+      paths.mkdir(savepath)
+      local p2 = paths.concat(savepath, 'out.png')
       image.save(p2, output)
 
       print('  frame '..i..' is done, it takes '..curTime..'s')
