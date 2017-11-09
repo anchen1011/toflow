@@ -68,7 +68,7 @@ th demo.lua -mode sr -inpath ../data/example/blur
 
 There are a few options in demo.lua:
 
-**cuda**: Whether Cuda is used.
+**nocuda**: Whether Cuda is disabled.
 
 **gpuId**: GPU device ID.
 
