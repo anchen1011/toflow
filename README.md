@@ -142,6 +142,7 @@ ffmpeg -i *.png -q 20 -vcodec jpeg2000 -format j2k name.mov
 
 #### Download the dataset (115G) [optional]
 ```sh
+cd ..
 ./download_dataset.sh
 ``` 
 
