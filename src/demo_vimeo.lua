@@ -7,7 +7,7 @@ cmd:text()
 cmd:text('tofu runnable')
 cmd:text()
 cmd:text('Options:')
-cmd:option('-cuda',            true,         'Whether using cuda')
+cmd:option('-nocuda',          false,        'Whether to disable cuda')
 cmd:option('-gpuID',           1,            'ID of GPUs to use')
 cmd:option('-mode',            'denoise',    'Model class for evaluation')
 cmd:option('-inpath',          '',           'The input sequence directory')
@@ -21,9 +21,10 @@ local loader = require('main/loader')
 local gen_path = loader.gen_path
 local get_file = loader.get_file
 
+opt.cuda = not opt.nocuda
 mode = opt.mode
 
-if opt.inpath ~= nil then
+if opt.inpath ~= '' then
   inpath = opt.inpath
 else
   if mode == 'denoise' then
@@ -37,7 +38,7 @@ else
   end
 end
 
-if opt.outpath ~= nil then
+if opt.outpath ~= '' then
   outpath = opt.outpath
 else
   if mode == 'denoise' then
