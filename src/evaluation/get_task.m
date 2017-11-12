@@ -1,4 +1,4 @@
-function task = get_task(output_dir, target_dir, task)
+function tasklist = get_task(output_dir, target_dir, task)
 
 tasklist = cell(1, 7);
 
@@ -10,7 +10,7 @@ tasklist{1,5} = 'sep';                              % Subpaths class (correspond
 tasklist{1,6} = 'im4.png';                          % The name of target file under the target path
 tasklist{1,7} = 'out.png';                          % The name of output file under the target path
 if task == 'interp'
-  tasklist{n,2} = 3782;
+  tasklist{1,2} = 3782;
   tasklist{1,5} = 'tri';
   tasklist{1,6} = 'im2.png';
 end

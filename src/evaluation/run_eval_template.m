@@ -9,7 +9,7 @@ absAll = zeros(nim,1);
 for i = 1:length(imlist)
   imname = imlist{i};
   imgt = im2double(imread(fullfile(gtdir, sampledirs{i}, gtsuffix)));
-  imes = im2double(imread(fullfile(esdir, [sampledirs{i} essuffix])));
+  imes = im2double(imread(fullfile(esdir, sampledirs{i}, essuffix)));
   [h,w,c] = size(imgt);
   if c == 1
     tmp = zeros(h,w,3);
@@ -31,7 +31,7 @@ for i = 1:length(imlist)
   psnrAll(i) = psnr(imes, imgt);
   ssimAll(i) = ssim(imes, imgt);
   absAll(i) = mean2(abs(imes - imgt));
-  %fprintf('%d/%d\n',i,nim);
+  fprintf('%d/%d\n',i,nim);
 end
 
 %%
