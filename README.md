@@ -173,13 +173,13 @@ Results will be returned by the function and printed to the screen.
 
 To evaluate our results, under src/evaluation with Matlab
 ```
-evaluate('../../result/interp', '../../data/vimeo_tri_test_original')
-evaluate('../../result/denoise', '../../data/vimeo_sep_test_original')
-evaluate('../../result/deblock', '../../data/vimeo_sep_test_original')
-evaluate('../../result/sr', '../../data/vimeo_sep_test_original')
+evaluate('../../output/interp', '../../data/vimeo_tri_test_original', 'interp')
+evaluate('../../output/denoise', '../../data/vimeo_sep_test_original', 'denoise')
+evaluate('../../output/deblock', '../../data/vimeo_sep_test_original', 'deblock')
+evaluate('../../output/sr', '../../data/vimeo_sep_test_original', 'sr')
 ```
 
-It is assumed that our datasets are unzipped under data/ and not renamed. It is also assumed that results are put under [output_root]/[task_name] e.g. result/sr result/interp result/denoise result/deblock, with exactly the same subfolder structure as our datasets.
+It is assumed that our datasets are unzipped under data/ and not renamed. It is also assumed that results are put under [output_root]/[task_name] e.g. output/sr output/interp output/denoise output/deblock, with exactly the same subfolder structure as our datasets.
 
 ## References
 1. Our warping code is based on [qassemoquab/stnbhwd](https://github.com/qassemoquab/stnbhwd).
