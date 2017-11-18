@@ -1,6 +1,6 @@
-# SSFlow: Self-Supervised Video Enhancement with Task-Oriented Motion Cues
+# TOFlow: Video Enhancement with Task-Oriented Flow
 
-This repository contains pre-trained models and demo code for the project 'SSFlow: Self-Supervised Video Enhancement with Task-Oriented Motion Cues'
+This repository contains pre-trained models and demo code for the project 'TOFlow: Video Enhancement with Task-Oriented Flow'
 
 ## Prerequisites
 
@@ -21,12 +21,12 @@ Our current release has been tested on Ubuntu 14.04.
 
 #### Clone the repository
 ```sh
-git clone https://github.com/anchen1011/ssflow.git
+git clone https://github.com/anchen1011/toflow.git
 ```
 
 #### Install dependency
 ```sh
-cd ssflow/src/stnbhwd
+cd toflow/src/stnbhwd
 luarocks make
 ```
 This will install 'stn' package for Lua. The list of components:
