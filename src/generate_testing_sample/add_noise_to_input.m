@@ -8,8 +8,8 @@ if ~exist(output_path, 'dir')
 end
 for iimg = 1 : num_imgs
   img_list{iimg} = im2uint8(imread(fullfile(data_path, filenames(iimg).name)));
-	img_list{iimg} = addnoise(img_list{iimg});
-	imwrite(img_list{iimg}, [output_path '/im' sprintf('%04d',iimg) '.png']);
+  img_list{iimg} = addnoise(img_list{iimg});
+  imwrite(img_list{iimg}, [output_path '/im' sprintf('%04d',iimg) '.png']);
 end
 
 end
