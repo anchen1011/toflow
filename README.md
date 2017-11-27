@@ -154,10 +154,10 @@ cd ..
 #### Run test code
 ```sh
 cd src
-th demo_vimeo.lua -mode interp
-th demo_vimeo.lua -mode denoise
-th demo_vimeo.lua -mode deblock
-th demo_vimeo.lua -mode sr
+th demo_vimeo90k.lua -mode interp
+th demo_vimeo90k.lua -mode denoise
+th demo_vimeo90k.lua -mode deblock
+th demo_vimeo90k.lua -mode sr
 ```
 
 #### Evaluate
