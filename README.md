@@ -80,7 +80,7 @@ There are a few options in demo.lua:
 
 **inpath**: The input sequence directory.
 
-**outpath**: The location to store the result (data/tmp by default).
+**outpath**: The location to store the result (demo_output by default).
 
 
 ## The Vimeo Dataset
