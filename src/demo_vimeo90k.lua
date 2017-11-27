@@ -15,13 +15,13 @@ cmd:option('-outpath',         '',           'The location to store the result')
 cmd:text()  
 
 opt = cmd:parse(arg or {})
+opt.cuda = not opt.nocuda
 
 require('main/init')
 local loader = require('main/loader')
 local gen_path = loader.gen_path
 local get_file = loader.get_file
 
-opt.cuda = not opt.nocuda
 mode = opt.mode
 
 if opt.inpath ~= '' then
