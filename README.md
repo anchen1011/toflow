@@ -4,7 +4,7 @@ This repository contains pre-trained models and demo code for the project 'TOFlo
 
 ## Video Demo
 
-[![IMAGE ALT TEXT](http://img.youtube.com/vi/msC5GK9aV9Q/0.jpg)](http://www.youtube.com/watch?v=msC5GK9aV9Q "Video Demo")
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/msC5GK9aV9Q/0.jpg) | width=400px](http://www.youtube.com/watch?v=msC5GK9aV9Q "Video Demo")
 
 If you cannot access YouTube, please download our video [here](http://toflow.csail.mit.edu/toflow.mp4) in 1080p.
 
