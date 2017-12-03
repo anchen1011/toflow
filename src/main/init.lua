@@ -7,6 +7,7 @@ end
 require 'nn'
 if opt.cuda then
   require 'cudnn'
+  require 'cunn'
 end
 require 'stn'
 require 'util/nn/WarpFlowNew'
