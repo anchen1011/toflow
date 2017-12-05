@@ -170,9 +170,9 @@ Results will be returned by the function and printed to the screen.
 To evaluate our results, under src/evaluation with Matlab
 ```
 evaluate('../../output/interp', '../../data/vimeo_interp_test/target', 'interp')
-evaluate('../../output/denoise', '../../data/vimeo_test_clean', 'denoise')
-evaluate('../../output/deblock', '../../data/vimeo_test_clean', 'deblock')
-evaluate('../../output/sr', '../../data/vimeo_test_clean', 'sr')
+evaluate('../../output/denoise', '../../data/vimeo_test_clean/sequences', 'denoise')
+evaluate('../../output/deblock', '../../data/vimeo_test_clean/sequences', 'deblock')
+evaluate('../../output/sr', '../../data/vimeo_test_clean/sequences', 'sr')
 ```
 
 It is assumed that our datasets are unzipped under data/ and not renamed. It is also assumed that results are put under [output_root]/[task_name] e.g. output/sr output/interp output/denoise output/deblock, with exactly the same subfolder structure as our datasets.
