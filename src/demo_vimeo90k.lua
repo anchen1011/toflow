@@ -28,13 +28,13 @@ if opt.inpath ~= '' then
   inpath = opt.inpath
 else
   if mode == 'denoise' then
-    inpath = '../data/vimeo_sep_noisy'
+    inpath = '../data/vimeo_denoising_test/input'
   elseif mode == 'deblock' then
-    inpath = '../data/vimeo_sep_block'
+    inpath = '../data/vimeo_deblockin_test/input'
   elseif mode == 'sr' then
-    inpath = '../data/vimeo_sep_blur'
+    inpath = '../data/vimeo_super_resolution_test/input'
   elseif mode == 'interp' then
-    inpath = '../data/vimeo_tri_test'
+    inpath = '../data/vimeo_interp_test/input'
   end
 end
 

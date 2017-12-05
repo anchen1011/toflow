@@ -97,35 +97,25 @@ There are a few options in demo.lua:
 
 73171 RGB frame triplets (73k sequences, each sequence with 3 consecutive frames) from 15k video clips with fixed resolution 448 x 256. This dataset is designed for video interpolation. 
 
-The originals can be downloaded [here](http://data.csail.mit.edu/tofu/dataset/vimeo_tri.zip). (33G)
+The training set can be downloaded [here](http://data.csail.mit.edu/tofu/dataset/vimeo_triplet.zip). (33G)
 
-The testing set can be downloaded [here](http://data.csail.mit.edu/tofu/testset/vimeo_tri_test.zip). (1.7G)
-
-The testing set originals can be downloaded [here](http://data.csail.mit.edu/tofu/testset/vimeo_tri_test_original.zip). (1.7G)
-
-The list of training sequences: data/tri_trainlist.txt
-
-The list of testing sequences: data/tri_testlist.txt
+The testing set can be downloaded [here](http://data.csail.mit.edu/tofu/testset/vimeo_interp_test.zip). (1.7G)
 
 #### Septuplets
 
 91701 RGB frame septuplets (92k sequences, each sequence with 7 consecutive frames) from 39k video clips with fixed resolution 448 x 256. This dataset is designed to video denoising, deblocking, and super-resolution.
 
-The originals can be downloaded [here](http://data.csail.mit.edu/tofu/dataset/vimeo_sep.zip). (82G)
+The dataset can be downloaded [here](http://data.csail.mit.edu/tofu/dataset/vimeo_septuplet.zip). (82G)
 
-The noisy testing set can be downloaded [here](http://data.csail.mit.edu/tofu/testset/vimeo_sep_noisy.zip). (16G)
+The testing set for video denoising can be downloaded [here](http://data.csail.mit.edu/tofu/testset/vimeo_denoising_test.zip). (16G)
 
-The blur testing set can be downloaded [here](http://data.csail.mit.edu/tofu/testset/vimeo_sep_blur.zip). (5G)
+The testing set for video super-resolution can be downloaded [here](http://data.csail.mit.edu/tofu/testset/vimeo_super_resolution_test.zip). (6G)
 
-The low resolution testing set can be downloaded [here](http://data.csail.mit.edu/tofu/testset/vimeo_sep_low.zip). (649M)
+The testing set for video deblocking can be downloaded [here](http://data.csail.mit.edu/tofu/testset/vimeo_sep_block.zip). (11G)
 
-The blocky testing set can be downloaded [here](http://data.csail.mit.edu/tofu/testset/vimeo_sep_block.zip). (11G)
+The testing set for video deblocking can be downloaded [here](http://data.csail.mit.edu/tofu/testset/vimeo_sep_block.zip). (11G)
 
-The testing set originals can be downloaded [here](http://data.csail.mit.edu/tofu/testset/vimeo_sep_test_original.zip). (15G)
-
-The list of training sequences: data/sep_trainlist.txt
-
-The list of testing sequences: data/sep_testlist.txt
+The clean testing set can be downloaded [here](http://data.csail.mit.edu/tofu/testset/vimeo_test_clean.zip). (15G)
 
 #### Generate Testing Sequences
 
@@ -181,10 +171,10 @@ Results will be returned by the function and printed to the screen.
 
 To evaluate our results, under src/evaluation with Matlab
 ```
-evaluate('../../output/interp', '../../data/vimeo_tri_test_original', 'interp')
-evaluate('../../output/denoise', '../../data/vimeo_sep_test_original', 'denoise')
-evaluate('../../output/deblock', '../../data/vimeo_sep_test_original', 'deblock')
-evaluate('../../output/sr', '../../data/vimeo_sep_test_original', 'sr')
+evaluate('../../output/interp', '../../data/vimeo_interp_test/target', 'interp')
+evaluate('../../output/denoise', '../../data/vimeo_test_clean', 'denoise')
+evaluate('../../output/deblock', '../../data/vimeo_test_clean', 'deblock')
+evaluate('../../output/sr', '../../data/vimeo_test_clean', 'sr')
 ```
 
 It is assumed that our datasets are unzipped under data/ and not renamed. It is also assumed that results are put under [output_root]/[task_name] e.g. output/sr output/interp output/denoise output/deblock, with exactly the same subfolder structure as our datasets.
