@@ -86,12 +86,12 @@ There are a few options in demo.lua:
 
 **inpath**: The path to the input sequence.
 
-**outpath**: The path to where the result stores (the default value is ./demo_output).
+**outpath**: The path to where the result stores (the default value is ../demo_output).
 
 
 ## Vimeo-90K Dataset
 
-We also build a large-scale, high-quality video dataset, Vimeo90K, downloaded from [vimeo.com](vimeo.com).  This dataset designed for the following four video processing tasks: temporal frame interpolation, video denoising, video deblocking, and video super-resolution.
+We also build a large-scale, high-quality video dataset, Vimeo90K, downloaded from [vimeo.com](vimeo.com).  This dataset is designed for the following four video processing tasks: temporal frame interpolation, video denoising, video deblocking, and video super-resolution.
 ![This image cannot be displayed. Please open this link in another browser: https://github.com/anchen1011/toflow/raw/master/data/doc/dataset.png](data/doc/dataset.png)
 
 Vimeo-90K consists of the following subsets：
@@ -100,7 +100,7 @@ Vimeo-90K consists of the following subsets：
 
 The triplet dataset consists of 73171 3-frame sequences with fixed resolution 448 x 256, extracted from 15k video clips. This dataset is designed for temporal frame interpolation. Download links are:
 
-Testing set only: [zip(1.7GB)](http://data.csail.mit.edu/tofu/testset/vimeo_interp_test.zip).
+Testing set only: [zip (1.7GB)](http://data.csail.mit.edu/tofu/testset/vimeo_interp_test.zip).
 
 Both training for testing set: [zip (33GB)](http://data.csail.mit.edu/tofu/dataset/vimeo_triplet.zip).
 
@@ -112,11 +112,11 @@ The testing set for video denoising: [zip (16GB)](http://data.csail.mit.edu/tofu
 
 The testing set for video deblocking: [zip (11GB)](http://data.csail.mit.edu/tofu/testset/vimeo_sep_block.zip).
 
-The testing set for video super-resolution: [zip(6GB)](http://data.csail.mit.edu/tofu/testset/vimeo_super_resolution_test.zip).
+The testing set for video super-resolution: [zip (6GB)](http://data.csail.mit.edu/tofu/testset/vimeo_super_resolution_test.zip).
 
-The original testing set (not downsampled or downgraded by noise) [zip (15GB)](http://data.csail.mit.edu/tofu/testset/vimeo_test_clean.zip).
+The original testing set (not downsampled or downgraded by noise): [zip (15GB)](http://data.csail.mit.edu/tofu/testset/vimeo_test_clean.zip).
 
-The original training + testing set (consists of 91701 sequences. It not downsampled or downgraded by noise): [zip (82GB)](http://data.csail.mit.edu/tofu/dataset/vimeo_septuplet.zip).
+The original training + testing set (consists of 91701 sequences. It is not downsampled or downgraded by noise): [zip (82GB)](http://data.csail.mit.edu/tofu/dataset/vimeo_septuplet.zip).
 
 #### Generate Testing Sequences
 
@@ -126,13 +126,13 @@ To generate noisy sequences with Matlab under src/generate_testing_sample, run
 ```
 add_noise_to_input(data_path, output_path);
 ``` 
-and the results will be stored under input_path/noisy
+and the results will be stored under output_path
 
 To generate blur sequences with Matlab, run
 ```
 blur_input(data_path, output_path);
 ```
-and the results will be stored under input_path/blur
+and the results will be stored under output_path
 
 Blocky sequences are compressed by FFmpeg. Our test set is generated with the following configuration:
 ```sh
