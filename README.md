@@ -17,7 +17,7 @@ Our implementation is based on Torch 7 (http://torch.ch).
 CUDA is suggested (https://developer.nvidia.com/cuda-toolkit) for fast evaluation. The demo code is still runnable without CUDA, but much slower.
 
 #### Matlab [optional]
-The scripts for video noising/super-resolution dataset generation and qualitative evaluation require Matlab installation (https://www.mathworks.com/products/matlab.html). It is not necessary for the demo code.
+The scripts for video noising/super-resolution dataset generation and quantitative evaluation require Matlab installation (https://www.mathworks.com/products/matlab.html). It is not necessary for the demo code.
 
 #### FFmpeg [optional]
 The scripts for video deblocking dataset generation require FFmpeg (http://ffmpeg.org) installation. It is not necessary for the demo code.
@@ -139,7 +139,7 @@ Blocky sequences are compressed by FFmpeg. Our test set is generated with the fo
 ffmpeg -i *.png -q 20 -vcodec jpeg2000 -format j2k name.mov 
 ```
 
-## Run qualitative evaluation
+## Run Quantitative Evaluation
 
 #### Download all four Vimeo testsets (52G) 
 ```sh
