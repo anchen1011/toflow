@@ -113,8 +113,6 @@ The testing set for video super-resolution can be downloaded [here](http://data.
 
 The testing set for video deblocking can be downloaded [here](http://data.csail.mit.edu/tofu/testset/vimeo_sep_block.zip). (11G)
 
-The testing set for video deblocking can be downloaded [here](http://data.csail.mit.edu/tofu/testset/vimeo_sep_block.zip). (11G)
-
 The clean testing set can be downloaded [here](http://data.csail.mit.edu/tofu/testset/vimeo_test_clean.zip). (15G)
 
 #### Generate Testing Sequences
