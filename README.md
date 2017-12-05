@@ -1,26 +1,26 @@
 # TOFlow: Video Enhancement with Task-Oriented Flow
 
-This repository contains pre-trained models and demo code for the project 'TOFlow: Video Enhancement with Task-Oriented Flow'
+This repository is based on the project 'TOFlow: Video Enhancement with Task-Oriented Flow'. It contains pre-trained models and demo code. It also includes description and download script for the Vimeo-90K dataset we collected.
 
 ## Video Demo
 
 [![IMAGE ALT TEXT](data/doc/video.png)](http://www.youtube.com/watch?v=msC5GK9aV9Q "Video Demo")
 
-If you cannot access YouTube, please download our video [here](http://toflow.csail.mit.edu/toflow.mp4) in 1080p.
+If you cannot access YouTube, please download 1080p video from [here](http://toflow.csail.mit.edu/toflow.mp4).
 
 ## Prerequisites
 
 #### Torch
-We use Torch 7 (http://torch.ch) for our implementation.
+Our implementation is based on Torch 7 (http://torch.ch).
 
-#### Cuda [optional]
-Cuda is suggested (https://developer.nvidia.com/cuda-toolkit) for computation.
+#### CUDA [optional]
+CUDA is suggested (https://developer.nvidia.com/cuda-toolkit) for fast evaluation. The demo code is still runnable without CUDA, but much slower.
 
 #### Matlab [optional]
-We use Matlab (https://www.mathworks.com/products/matlab.html) to generate noisy/blur sequences for training/testing.
+The scripts for video noising/super-resolution dataset generation and qualitative evaluation require Matlab installation (https://www.mathworks.com/products/matlab.html). It is not necessary for the demo code.
 
 #### FFmpeg [optional]
-We use FFmpeg (http://ffmpeg.org) to generate blocky sequences for training/testing.
+The scripts for video deblocking dataset generation require FFmpeg (http://ffmpeg.org) installation. It is not necessary for the demo code.
 
 ## Installation
 Our current release has been tested on Ubuntu 14.04.
@@ -63,7 +63,7 @@ cd ../../
 ./download_models.sh
 ``` 
 
-#### Run test code
+## Run demo code
 ```sh
 cd src
 th demo.lua -mode interp -inpath ../data/example/low_frame_rate
@@ -74,80 +74,79 @@ th demo.lua -mode sr -inpath ../data/example/blur
 
 There are a few options in demo.lua:
 
-**nocuda**: Whether Cuda is disabled.
+**nocuda**: Set this option when CUDA is not available.
 
 **gpuId**: GPU device ID.
 
-**mode**: Options include
+**mode**: There are four options:
 - 'interp': video interpolation
 - 'denoise': video denoising 
 - 'deblock': video deblocking
 - 'sr': video super-resolution
 
-**inpath**: The input sequence directory.
+**inpath**: The path to the input sequence.
 
-**outpath**: The location to store the result (demo_output by default).
+**outpath**: The path to where the result stores (the default value is ./demo_output).
 
 
-## The Vimeo Dataset
+## Vimeo-90K Dataset
 
-![alt text](data/doc/dataset.png)
+We also build a large-scale, high-quality video dataset, Vimeo90K, downloaded from [vimeo.com](vimeo.com).  This dataset designed for the following four video processing tasks: temporal frame interpolation, video denoising, video deblocking, and video super-resolution.
+![This image cannot be displayed. Please open this link in another browser: https://github.com/anchen1011/toflow/raw/master/data/doc/dataset.png](data/doc/dataset.png)
 
-#### Triplets
+Vimeo-90K consists of the following subsets：
 
-73171 RGB frame triplets (73k sequences, each sequence with 3 consecutive frames) from 15k video clips with fixed resolution 448 x 256. This dataset is designed for video interpolation. 
+#### Triplet dataset for temporal frame interpolation
 
-The training set can be downloaded [here](http://data.csail.mit.edu/tofu/dataset/vimeo_triplet.zip). (33G)
+The triplet dataset consists of 73171 3-frame sequences with fixed resolution 448 x 256, extracted from 15k video clips. This dataset is designed for temporal frame interpolation. Download links are:
 
-The testing set can be downloaded [here](http://data.csail.mit.edu/tofu/testset/vimeo_interp_test.zip). (1.7G)
+Testing set only: [zip(1.7GB)](http://data.csail.mit.edu/tofu/testset/vimeo_interp_test.zip).
 
-#### Septuplets
+Both training for testing set: [zip (33GB)](http://data.csail.mit.edu/tofu/dataset/vimeo_triplet.zip).
 
-91701 RGB frame septuplets (92k sequences, each sequence with 7 consecutive frames) from 39k video clips with fixed resolution 448 x 256. This dataset is designed to video denoising, deblocking, and super-resolution.
+#### Septuplet dataset for video denoising, super-resolution, and deblocking
 
-The dataset can be downloaded [here](http://data.csail.mit.edu/tofu/dataset/vimeo_septuplet.zip). (82G)
+The septuplet dataset consists of 91701 7-frame sequences with fixed resolution 448 x 256, extracted from 39k video clips. This dataset is designed to video denoising, deblocking, and super-resolution.
 
-The testing set for video denoising can be downloaded [here](http://data.csail.mit.edu/tofu/testset/vimeo_denoising_test.zip). (16G)
+The testing set for video denoising: [zip (16GB)](http://data.csail.mit.edu/tofu/testset/vimeo_denoising_test.zip).
 
-The testing set for video super-resolution can be downloaded [here](http://data.csail.mit.edu/tofu/testset/vimeo_super_resolution_test.zip). (6G)
+The testing set for video deblocking: [zip (11GB)](http://data.csail.mit.edu/tofu/testset/vimeo_sep_block.zip).
 
-The testing set for video deblocking can be downloaded [here](http://data.csail.mit.edu/tofu/testset/vimeo_sep_block.zip). (11G)
+The testing set for video super-resolution: [zip(6GB)](http://data.csail.mit.edu/tofu/testset/vimeo_super_resolution_test.zip).
 
-The clean testing set can be downloaded [here](http://data.csail.mit.edu/tofu/testset/vimeo_test_clean.zip). (15G)
+The original testing set (not downsampled or downgraded by noise) [zip (15GB)](http://data.csail.mit.edu/tofu/testset/vimeo_test_clean.zip).
+
+The original training + testing set (consists of 91701 sequences. It not downsampled or downgraded by noise): [zip (82GB)](http://data.csail.mit.edu/tofu/dataset/vimeo_septuplet.zip).
 
 #### Generate Testing Sequences
 
-The code used to generate noisy/blur sequences is provided under src/generate_testing_sample
+The code used to generate noisy/low-resolution sequences is provided under src/generate_testing_sample
 
-Generate noisy sequences with Matlab under src/generate_testing_sample
+To generate noisy sequences with Matlab under src/generate_testing_sample, run
 ```
 add_noise_to_input(data_path, output_path);
 ``` 
-Result will be stored under input_path/noisy
+and the results will be stored under input_path/noisy
 
-Generate blur sequences with Matlab
+To generate blur sequences with Matlab, run
 ```
 blur_input(data_path, output_path);
 ```
-Result will be stored under input_path/blur
+and the results will be stored under input_path/blur
 
 Blocky sequences are compressed by FFmpeg. Our test set is generated with the following configuration:
 ```sh
 ffmpeg -i *.png -q 20 -vcodec jpeg2000 -format j2k name.mov 
 ```
 
-#### Download the dataset (115G) [optional]
-```sh
-cd ..
-./download_dataset.sh
-``` 
+## Run qualitative evaluation
 
-#### Download the testset (52G) 
+#### Download all four Vimeo testsets (52G) 
 ```sh
 ./download_testset.sh
 ``` 
 
-#### Run test code
+#### Run inference on Vimeo testsets
 ```sh
 cd src
 th demo_vimeo90k.lua -mode interp
@@ -156,19 +155,17 @@ th demo_vimeo90k.lua -mode deblock
 th demo_vimeo90k.lua -mode sr
 ```
 
-#### Evaluate
+#### Evaluation
 
-The code used to evaluate results in PSNR, SSIM, Abs metrics is provided under src/evaluation
-
-Evaluate results with Matlab under src/evaluation
+We use three metrics to evaluate the performance of the algorithm: PSNR, SSIM, and Abs metrics. To run evaluation, run following commands in Matlab:
 ```
+cd src/evaluation
 evaluate(output_dir, target_dir);
 ``` 
 
-Results will be returned by the function and printed to the screen.
-
-To evaluate our results, under src/evaluation with Matlab
+For example, to evaluate results generated in the previous step, run
 ```
+cd src/evaluation
 evaluate('../../output/interp', '../../data/vimeo_interp_test/target', 'interp')
 evaluate('../../output/denoise', '../../data/vimeo_test_clean/sequences', 'denoise')
 evaluate('../../output/deblock', '../../data/vimeo_test_clean/sequences', 'deblock')
