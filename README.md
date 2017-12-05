@@ -63,7 +63,7 @@ cd ../../
 ./download_models.sh
 ``` 
 
-## Run demo code
+## Run Demo Code
 ```sh
 cd src
 th demo.lua -mode interp -inpath ../data/example/low_frame_rate
