@@ -1,6 +1,6 @@
 # TOFlow: Video Enhancement with Task-Oriented Flow
 
-This repository is based on the project 'TOFlow: Video Enhancement with Task-Oriented Flow'. It contains pre-trained models and demo code. It also includes description and download script for the Vimeo-90K dataset we collected.
+This repository is based on the project 'TOFlow: Video Enhancement with Task-Oriented Flow'. It contains pre-trained models and a demo code. It also includes the description and download scripts for the Vimeo-90K dataset we collected.
 
 ## Video Demo
 
@@ -14,13 +14,13 @@ If you cannot access YouTube, please download 1080p video from [here](http://tof
 Our implementation is based on Torch 7 (http://torch.ch).
 
 #### CUDA [optional]
-CUDA is suggested (https://developer.nvidia.com/cuda-toolkit) for fast evaluation. The demo code is still runnable without CUDA, but much slower.
+CUDA is suggested (https://developer.nvidia.com/cuda-toolkit) for fast inference. The demo code is still runnable without CUDA, but much slower.
 
 #### Matlab [optional]
-The scripts for video noising/super-resolution dataset generation and quantitative evaluation require Matlab installation (https://www.mathworks.com/products/matlab.html). It is not necessary for the demo code.
+We use Matlab for generating video denoising/super-resolution dataset and quantitative evaluation require Matlab installation (https://www.mathworks.com/products/matlab.html). It is not necessary for the demo code.
 
 #### FFmpeg [optional]
-The scripts for video deblocking dataset generation require FFmpeg (http://ffmpeg.org) installation. It is not necessary for the demo code.
+We use FFmpeg (http://ffmpeg.org) for generating video deblocking dataset. It is not necessary for the demo code.
 
 ## Installation
 Our current release has been tested on Ubuntu 14.04.
@@ -79,26 +79,26 @@ There are a few options in demo.lua:
 **gpuId**: GPU device ID.
 
 **mode**: There are four options:
-- 'interp': video interpolation
+- 'interp': temporal frame interpolation
 - 'denoise': video denoising 
 - 'deblock': video deblocking
 - 'sr': video super-resolution
 
 **inpath**: The path to the input sequence.
 
-**outpath**: The path to where the result stores (the default value is ../demo_output).
+**outpath**: The path to where the result stores (default is ../demo_output).
 
 
 ## Vimeo-90K Dataset
 
-We also build a large-scale, high-quality video dataset, Vimeo90K, downloaded from [vimeo.com](vimeo.com).  This dataset is designed for the following four video processing tasks: temporal frame interpolation, video denoising, video deblocking, and video super-resolution.
+We also build a large-scale, high-quality video dataset, Vimeo90K. This dataset consists of 89,800 video clips  downloaded from [vimeo.com](vimeo.com), which covers large variaty of scenes and actions. It is designed for the following four video processing tasks: temporal frame interpolation, video denoising, video deblocking, and video super-resolution.
 ![This image cannot be displayed. Please open this link in another browser: https://github.com/anchen1011/toflow/raw/master/data/doc/dataset.png](data/doc/dataset.png)
 
-Vimeo-90K consists of the following subsets：
+We further process these 89,800 video clips to generate the following two subsets (the orignal video clips will come out soon):
 
 #### Triplet dataset for temporal frame interpolation
 
-The triplet dataset consists of 73171 3-frame sequences with fixed resolution 448 x 256, extracted from 15k video clips. This dataset is designed for temporal frame interpolation. Download links are:
+The triplet dataset consists of 73171 3-frame sequences with a fixed resolution of 448 x 256, extracted from 15k selected video clips from Vimeo-90K. This dataset is designed for temporal frame interpolation. Download links are:
 
 Testing set only: [zip (1.7GB)](http://data.csail.mit.edu/tofu/testset/vimeo_interp_test.zip).
 
@@ -106,7 +106,7 @@ Both training for testing set: [zip (33GB)](http://data.csail.mit.edu/tofu/datas
 
 #### Septuplet dataset for video denoising, super-resolution, and deblocking
 
-The septuplet dataset consists of 91701 7-frame sequences with fixed resolution 448 x 256, extracted from 39k video clips. This dataset is designed to video denoising, deblocking, and super-resolution.
+The septuplet dataset consists of 91701 7-frame sequences with fixed resolution 448 x 256, extracted from 39k selected video clips from Vimeo-90k. This dataset is designed to video denoising, deblocking, and super-resolution.
 
 The testing set for video denoising: [zip (16GB)](http://data.csail.mit.edu/tofu/testset/vimeo_denoising_test.zip).
 
@@ -116,11 +116,11 @@ The testing set for video super-resolution: [zip (6GB)](http://data.csail.mit.ed
 
 The original testing set (not downsampled or downgraded by noise): [zip (15GB)](http://data.csail.mit.edu/tofu/testset/vimeo_test_clean.zip).
 
-The original training + testing set (consists of 91701 sequences. It is not downsampled or downgraded by noise): [zip (82GB)](http://data.csail.mit.edu/tofu/dataset/vimeo_septuplet.zip).
+The original training + testing set (consists of 91701 sequences, which are not downsampled or downgraded by noise): [zip (82GB)](http://data.csail.mit.edu/tofu/dataset/vimeo_septuplet.zip).
 
 #### Generate Testing Sequences
 
-The code used to generate noisy/low-resolution sequences is provided under src/generate_testing_sample
+See src/generate_testing_sample for the functions to generate noisy/low-resolution sequences.
 
 To generate noisy sequences with Matlab under src/generate_testing_sample, run
 ```
@@ -157,7 +157,7 @@ th demo_vimeo90k.lua -mode sr
 
 #### Evaluation
 
-We use three metrics to evaluate the performance of the algorithm: PSNR, SSIM, and Abs metrics. To run evaluation, run following commands in Matlab:
+We use three metrics to evaluate the performance of our algorithm: PSNR, SSIM, and Abs metrics. To run evaluation, execute following commands in Matlab:
 ```
 cd src/evaluation
 evaluate(output_dir, target_dir);
