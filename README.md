@@ -100,23 +100,23 @@ We further process these 89,800 video clips to generate the following two subset
 
 The triplet dataset consists of 73171 3-frame sequences with a fixed resolution of 448 x 256, extracted from 15k selected video clips from Vimeo-90K. This dataset is designed for temporal frame interpolation. Download links are:
 
-Testing set only: [zip (1.7GB)](http://data.csail.mit.edu/tofu/testset/vimeo_interp_test.zip).
+Test set only: [zip (1.7GB)](http://data.csail.mit.edu/tofu/testset/vimeo_interp_test.zip).
 
-Both training for testing set: [zip (33GB)](http://data.csail.mit.edu/tofu/dataset/vimeo_triplet.zip).
+Both training and test set: [zip (33GB)](http://data.csail.mit.edu/tofu/dataset/vimeo_triplet.zip).
 
 #### Septuplet dataset for video denoising, super-resolution, and deblocking
 
 The septuplet dataset consists of 91701 7-frame sequences with fixed resolution 448 x 256, extracted from 39k selected video clips from Vimeo-90k. This dataset is designed to video denoising, deblocking, and super-resolution.
 
-The testing set for video denoising: [zip (16GB)](http://data.csail.mit.edu/tofu/testset/vimeo_denoising_test.zip).
+The test set for video denoising: [zip (16GB)](http://data.csail.mit.edu/tofu/testset/vimeo_denoising_test.zip).
 
-The testing set for video deblocking: [zip (11GB)](http://data.csail.mit.edu/tofu/testset/vimeo_sep_block.zip).
+The test set for video deblocking: [zip (11GB)](http://data.csail.mit.edu/tofu/testset/vimeo_sep_block.zip).
 
-The testing set for video super-resolution: [zip (6GB)](http://data.csail.mit.edu/tofu/testset/vimeo_super_resolution_test.zip).
+The test set for video super-resolution: [zip (6GB)](http://data.csail.mit.edu/tofu/testset/vimeo_super_resolution_test.zip).
 
-The original testing set (not downsampled or downgraded by noise): [zip (15GB)](http://data.csail.mit.edu/tofu/testset/vimeo_test_clean.zip).
+The original test set (not downsampled or downgraded by noise): [zip (15GB)](http://data.csail.mit.edu/tofu/testset/vimeo_test_clean.zip).
 
-The original training + testing set (consists of 91701 sequences, which are not downsampled or downgraded by noise): [zip (82GB)](http://data.csail.mit.edu/tofu/dataset/vimeo_septuplet.zip).
+The original training + test set (consists of 91701 sequences, which are not downsampled or downgraded by noise): [zip (82GB)](http://data.csail.mit.edu/tofu/dataset/vimeo_septuplet.zip).
 
 #### Generate Testing Sequences
 
