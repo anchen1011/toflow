@@ -19,9 +19,7 @@ local function resizeInput(inputs, mode, h, w)
 
 end
 
-local function gen(pth, mode)
--- TODO(baian): can you rename it to gen_path to be consistent to what you return
--- pth -> filepath
+local function gen_path(filepath, mode)
   local num = 7
   if mode == 'tri' then
     num = 2
@@ -39,10 +37,7 @@ local function gen(pth, mode)
   return st
 end
 
-local function get(pinput, mode, h, w)
--- TODO(baian): can you rename it to get_path to be consistent to what you return
--- pinput -> inputpath
-
+local function get_file(inputpath, mode, h, w)
   local mode = mode or 'sep'
   local inputs = {}
 
@@ -93,4 +88,4 @@ local function get(pinput, mode, h, w)
   return inputs, h, w
 end
 
-return {gen_path=gen, get_file=get}
+return {gen_path=gen_path, get_file=get_file}
