@@ -24,7 +24,7 @@ local function gen_path(filepath, mode)
   if mode == 'tri' then
     num = 2
   end
-  local lst = dir.getallfiles(pth)
+  local lst = dir.getallfiles(filepath)
   table.sort(lst)
   local st = {}
   for i = 1,(#lst - num + 1) do
@@ -42,12 +42,12 @@ local function get_file(inputpath, mode, h, w)
   local inputs = {}
 
   if mode == 'sep' then
-    inputs[1] = ut.tf.defaultTestTransform(ut.datasets.loadImage(pinput[4]))
+    inputs[1] = ut.tf.defaultTestTransform(ut.datasets.loadImage(inputpath[4]))
     for i = 1,3 do
-      inputs[i+1] = ut.tf.defaultTestTransform(ut.datasets.loadImage(pinput[i]))
+      inputs[i+1] = ut.tf.defaultTestTransform(ut.datasets.loadImage(inputpath[i]))
     end
     for i = 5,7 do
-      inputs[i] = ut.tf.defaultTestTransform(ut.datasets.loadImage(pinput[i]))
+      inputs[i] = ut.tf.defaultTestTransform(ut.datasets.loadImage(inputpath[i]))
     end
     inputs[8] = torch.zeros(2, inputs[1]:size(2)/8, inputs[1]:size(3)/8)
     for i = 1,8 do
@@ -56,7 +56,7 @@ local function get_file(inputpath, mode, h, w)
   else
     for i = 1,2 do
       inputs[i] = ut.tf.defaultTestTransform(
-        ut.datasets.loadImage(pinput[i]))
+        ut.datasets.loadImage(inputpath[i]))
       inputs[i] = inputs[i]:clone():resize(
         1,inputs[i]:size(1),inputs[i]:size(2),inputs[i]:size(3))
     end
