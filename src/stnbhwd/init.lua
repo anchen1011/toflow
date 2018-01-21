@@ -9,7 +9,6 @@ end
 require('stn.AffineTransformMatrixGenerator')
 require('stn.AffineGridGeneratorBHWD')
 require('stn.BilinearSamplerBHWD')
---require('stn.ScaleBHWD')
 
 require('stn.test')
 

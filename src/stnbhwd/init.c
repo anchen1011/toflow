@@ -6,7 +6,6 @@
 #define nn_(NAME) TH_CONCAT_3(nn_, Real, NAME)
 
 #include "generic/BilinearSamplerBHWD.c"
-//#include "generic/ScaleBHWD.c"
 #include "THGenerateFloatTypes.h"
 
 LUA_EXTERNC DLL_EXPORT int luaopen_libstn(lua_State *L);
@@ -20,10 +19,6 @@ int luaopen_libstn(lua_State *L)
   nn_FloatBilinearSamplerBHWD_init(L);
 
   nn_DoubleBilinearSamplerBHWD_init(L);
-
-//  nn_FloatScaleBHWD_init(L);
-
-//  nn_DoubleScaleBHWD_init(L);
 
   return 1;
 }
