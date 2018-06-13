@@ -91,7 +91,7 @@ There are a few options in demo.lua:
 
 ## Vimeo-90K Dataset
 
-We also build a large-scale, high-quality video dataset, Vimeo90K. This dataset consists of 89,800 video clips  downloaded from [vimeo.com](vimeo.com), which covers large variaty of scenes and actions. It is designed for the following four video processing tasks: temporal frame interpolation, video denoising, video deblocking, and video super-resolution.
+We also build a large-scale, high-quality video dataset, Vimeo-90K. This dataset consists of 89,800 video clips  downloaded from [vimeo.com](vimeo.com), which covers large variaty of scenes and actions. It is designed for the following four video processing tasks: temporal frame interpolation, video denoising, video deblocking, and video super-resolution.
 ![This image cannot be displayed. Please open this link in another browser: https://github.com/anchen1011/toflow/raw/master/data/doc/dataset.png](data/doc/dataset.png)
 
 We further process these 89,800 video clips to generate the following two subsets (the orignal video clips will come out soon):
