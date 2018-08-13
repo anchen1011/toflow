@@ -1,6 +1,6 @@
 require 'util/ut'
 
-local npMax = 2500000
+local npMax = 8500000
 
 local function resizeInput(inputs, mode, h, w)
 
