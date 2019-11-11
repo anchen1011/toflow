@@ -1,6 +1,19 @@
 # TOFlow: Video Enhancement with Task-Oriented Flow
 
-This repository is based on the project 'TOFlow: Video Enhancement with Task-Oriented Flow'. It contains pre-trained models and a demo code. It also includes the description and download scripts for the Vimeo-90K dataset we collected.
+This repository is based on our IJCV publication *TOFlow: Video Enhancement with Task-Oriented Flow* ([PDF](http://toflow.csail.mit.edu/toflow_ijcv.pdf)). It contains pre-trained models and a demo code. It also includes the description and download scripts for the Vimeo-90K dataset we collected. If you used this code or dataset in your work, please cite:
+
+```
+@article{xue2019video,
+  title={Video Enhancement with Task-Oriented Flow},
+  author={Xue, Tianfan and Chen, Baian and Wu, Jiajun and Wei, Donglai and Freeman, William T},
+  journal={International Journal of Computer Vision (IJCV)},
+  volume={127},
+  number={8},
+  pages={1106--1125},
+  year={2019},
+  publisher={Springer}
+}
+```
 
 ## Video Demo
 
